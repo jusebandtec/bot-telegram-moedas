@@ -1,6 +1,6 @@
-package br.com.investimentos.bot.domain.repository;
+package br.com.obrigadobombcrypto.bot.domain.repository;
 
-import br.com.investimentos.bot.domain.responses.CoinsResponse;
+import br.com.obrigadobombcrypto.bot.domain.responses.CoinsResponse;
 
 import java.io.IOException;
 

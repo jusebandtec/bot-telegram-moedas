@@ -1,18 +1,19 @@
-package br.com.investimentos.bot.repository;
+package br.com.obrigadobombcrypto.bot.repository;
 
-import br.com.investimentos.bot.domain.responses.CoinMarketGetCoinResponse;
-import br.com.investimentos.bot.domain.responses.CoinsResponse;
-import br.com.investimentos.bot.domain.responses.GetAllCoinsResponse;
+import br.com.obrigadobombcrypto.bot.domain.responses.CoinMarketGetCoinResponse;
+import br.com.obrigadobombcrypto.bot.domain.responses.CoinsResponse;
+import br.com.obrigadobombcrypto.bot.domain.responses.GetAllCoinsResponse;
 import com.google.gson.Gson;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import lombok.var;
 
 import java.io.IOException;
 
-public class ValueCoinsRepository implements br.com.investimentos.bot.domain.repository.ValueCoinsRepository {
+public class ValueCoinsRepository implements br.com.obrigadobombcrypto.bot.domain.repository.ValueCoinsRepository {
 
     private Gson gson;
     private GetAllCoinsResponse coins;

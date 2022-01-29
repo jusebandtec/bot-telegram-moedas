@@ -1,6 +1,4 @@
-package br.com.investimentos.bot.domain;
-
-import org.springframework.beans.factory.annotation.Value;
+package br.com.obrigadobombcrypto.bot.domain;
 
 public class Bot {
 

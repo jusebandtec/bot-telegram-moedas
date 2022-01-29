@@ -1,4 +1,4 @@
-package br.com.investimentos.bot.domain.responses;
+package br.com.obrigadobombcrypto.bot.domain.responses;
 
 public class CoinMarketGetCoinResponse {
 

@@ -1,6 +1,6 @@
-package br.com.investimentos.bot.domain.responses;
+package br.com.obrigadobombcrypto.bot.domain.responses;
 
-import br.com.investimentos.bot.domain.QuoteCoinMarket;
+import br.com.obrigadobombcrypto.bot.domain.QuoteCoinMarket;
 
 public class CoinsMarketResponseDto {
 

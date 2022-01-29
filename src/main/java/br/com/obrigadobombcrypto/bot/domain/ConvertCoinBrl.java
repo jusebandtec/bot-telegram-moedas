@@ -1,4 +1,4 @@
-package br.com.investimentos.bot.domain;
+package br.com.obrigadobombcrypto.bot.domain;
 
 public class ConvertCoinBrl {
     private double price;
