@@ -122,4 +122,5 @@ public class ValueCoinsRepository implements br.com.obrigadobombcrypto.bot.domai
                 .getBRL()
                 .getPrice();
     }
+
 }
