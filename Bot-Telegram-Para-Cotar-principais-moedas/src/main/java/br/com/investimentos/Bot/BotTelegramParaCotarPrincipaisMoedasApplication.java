@@ -1,8 +1,10 @@
-package br.com.investimentos.Bot.Telegram.Para.Cotar.principais.moedas;
+package br.com.investimentos.bot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
+@EnableScheduling
 @SpringBootApplication
 public class BotTelegramParaCotarPrincipaisMoedasApplication {
 

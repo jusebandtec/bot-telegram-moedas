@@ -1,4 +1,4 @@
-package br.com.investimentos.Bot.Telegram.Para.Cotar.principais.moedas;
+package br.com.investimentos.bot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
