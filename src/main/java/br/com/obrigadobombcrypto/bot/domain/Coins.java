@@ -66,9 +66,8 @@ public class Coins {
                 "%1$s\n" +
                 "%2$s\n" +
                 "%3$s\n" +
-                "%4$s\n" +
-                "%5$s",
-                        getUSDString(), getEURString(), getBRLString(), getBTCString(), getBCOINString());
+                "%4$s",
+                        getBCOINString(), getUSDString(), getEURString(), getBTCString());
 
     }
 
