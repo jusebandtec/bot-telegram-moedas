@@ -50,7 +50,7 @@ public class EchoBotService extends TelegramLongPollingBot {
 
         return SendMessage.builder()
                 .text(ObterMoedas().toString())
-                .chatId("-763504639")
+                .chatId("-656768137")
                 .build();
     }
 
