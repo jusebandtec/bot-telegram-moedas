@@ -25,21 +25,20 @@ public class EchoBotService extends TelegramLongPollingBot {
         return Bot.BOT_TOKEN;
     }
 
-    @Override
-    public void onRegister() {
-        try {
-            var mensagem = sendMessage();
-            execute(mensagem);
-        } catch (TelegramApiException | IOException ex) {
-            ex.printStackTrace();
-        }
-        onClosing();
-    }
+//    @Override
+//    public void onRegister() {
+//        try {
+//            var mensagem = sendMessage();
+//            execute(mensagem);
+//        } catch (TelegramApiException | IOException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 
     @Override
     public void onUpdateReceived(Update update) {
         try {
-            var mensagem = sendMessage();
+            var mensagem = sendMessage(update);
             execute(mensagem);
         } catch (TelegramApiException | IOException ex) {
             ex.printStackTrace();
@@ -47,11 +46,25 @@ public class EchoBotService extends TelegramLongPollingBot {
     }
 
     private SendMessage sendMessage() throws IOException {
-
         return SendMessage.builder()
                 .text(ObterMoedas().toString())
                 .chatId("-656768137")
                 .build();
+    }
+
+    private SendMessage sendMessage(Update update) throws IOException {
+
+        var firstName = update.getMessage().getFrom().getFirstName();
+
+        var moedas = ObterMoedas(Double.parseDouble(update.getMessage().getText()));
+
+        var resposta = moedas.enviarMensagemTelegram(firstName, Double.parseDouble(update.getMessage().getText()));
+
+        return SendMessage.builder()
+                .text(resposta)
+                .chatId("-656768137")
+                .build();
+
     }
 
 
@@ -65,8 +78,17 @@ public class EchoBotService extends TelegramLongPollingBot {
                 valueCoinsRepository.getEUR(),
                 valueCoinsRepository.getBCOIN(),
                 valueCoinsRepository.getBTC(),
-                valueCoinsRepository.getBRL()
+                valueCoinsRepository.getBRL(),
+                valueCoinsRepository.getBCOINinUSD()
             );
+    }
+
+    private Coins ObterMoedas(double valor) throws IOException {
+
+        var moedas = ObterMoedas();
+
+        return new Coins(valor, moedas.getBCOINTOUSD(), moedas.getUSD());
+
     }
 
 }

@@ -24,7 +24,7 @@ public class CoinsController {
     public ResponseEntity getAllCoins() throws IOException {
         return ResponseEntity.status(HttpStatus.OK).body(
                 new Coins(
-                        this.valueCoinsRepository.getUSD(), this.valueCoinsRepository.getEUR(), this.valueCoinsRepository.getBCOIN(), this.valueCoinsRepository.getBTC(), this.valueCoinsRepository.getBRL()
+                        this.valueCoinsRepository.getUSD(), this.valueCoinsRepository.getEUR(), this.valueCoinsRepository.getBCOIN(), this.valueCoinsRepository.getBTC(), this.valueCoinsRepository.getBRL(), this.valueCoinsRepository.getBCOINinUSD()
                 )
         );
     }

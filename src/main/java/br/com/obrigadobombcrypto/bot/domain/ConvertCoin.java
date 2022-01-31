@@ -1,6 +1,6 @@
 package br.com.obrigadobombcrypto.bot.domain;
 
-public class ConvertCoinBrl {
+public class ConvertCoin {
     private double price;
 
 
@@ -11,4 +11,6 @@ public class ConvertCoinBrl {
     public void setPrice(double price) {
         this.price = price;
     }
+
+
 }

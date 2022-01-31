@@ -123,4 +123,33 @@ public class ValueCoinsRepository implements br.com.obrigadobombcrypto.bot.domai
                 .getPrice();
     }
 
+    @Override
+    public double getBCOINinUSD() throws IOException {
+        var httpClientRequest = HttpClients.createDefault();
+        var httpGet = new HttpGet("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=12252&convert=USD");
+        httpGet.setHeader("X-CMC_PRO_API_KEY","d9c76d00-264a-4dbd-ad00-063e29d618ef");
+
+        ResponseHandler responseHandler = response -> {
+            if (response.getStatusLine().getStatusCode() == 200) {
+                var entity = response.getEntity();
+                return entity != null ? EntityUtils.toString(entity) : null;
+            } else {
+                throw new ClientProtocolException("Unexpected response status: " + response
+                        .getStatusLine()
+                        .getStatusCode());
+            }
+        };
+
+        var responseBody = httpClientRequest.execute(httpGet, responseHandler);
+        var responseBodyString = responseBody.toString().replace(String.valueOf("\"12252\":{"), "");
+        var stringBuffer = new StringBuffer(responseBodyString);
+        stringBuffer.deleteCharAt(responseBodyString.length()-1);
+        var response = this.gson.fromJson(stringBuffer.toString(), CoinMarketGetCoinResponse.class);
+        return response
+                .getData()
+                .getQuote()
+                .getUSD()
+                .getPrice();
+    }
+
 }

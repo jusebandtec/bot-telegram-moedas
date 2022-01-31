@@ -7,16 +7,31 @@ public class Coins {
     private double BCOIN;
     private double BTC;
     private double BRL;
+    private double BCOINTOUSD;
 
-    public Coins(double USD, double EUR, double BCOIN, double BTC, double BRL) {
+    public Coins(double USD, double EUR, double BCOIN, double BTC, double BRL, double BCOINTOUSD) {
         this.BRL = BRL;
         this.USD = this.BRL / USD;
         this.EUR = this.BRL / EUR;
         this.BCOIN = BCOIN;
         this.BTC = BTC;
+        this.BCOINTOUSD = BCOINTOUSD;
+    }
+
+    public Coins(double valor, double BCOIN, double BRL) {
+        this.BCOIN = valor * BCOIN;
+        this.BRL = this.BCOIN * BRL;
     }
 
     public Coins() { }
+
+    public double getBCOINTOUSD() {
+        return BCOINTOUSD;
+    }
+
+    public void setBCOINTOUSD(double BCOINTOUSD) {
+        this.BCOINTOUSD = BCOINTOUSD;
+    }
 
     public double getUSD() {
         return USD;
@@ -71,6 +86,10 @@ public class Coins {
 
     }
 
+    public String enviarMensagemTelegram(String nome, double valor) {
+        return String.format("Olá, %1$s, você tem %2$s BCOIN's que valem:\nR$ %3$.4f \nUSD %4$.4f", nome, valor, this.BRL, this.BCOIN);
+    }
+
     private String getUSDString() {
         return Double.isInfinite(this.USD) ?
                 "Não conseguimos trazer o valor da moeda USD" : String.format("USD - R$%1$.4f", this.USD);
@@ -78,7 +97,7 @@ public class Coins {
 
     private String getEURString() {
         return Double.isInfinite(this.EUR) ?
-                "Não conseguimos trazer o valor da moeda USD" : String.format("EUR - R$%1$.4f", this.EUR);
+                "Não conseguimos trazer o valor da moeda EUR" : String.format("EUR - R$%1$.4f", this.EUR);
     }
 
     private String getBRLString() {
