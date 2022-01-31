@@ -25,15 +25,15 @@ public class EchoBotService extends TelegramLongPollingBot {
         return Bot.BOT_TOKEN;
     }
 
-//    @Override
-//    public void onRegister() {
-//        try {
-//            var mensagem = sendMessage();
-//            execute(mensagem);
-//        } catch (TelegramApiException | IOException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+    @Override
+    public void onRegister() {
+        try {
+            var mensagem = sendMessage();
+            execute(mensagem);
+        } catch (TelegramApiException | IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -58,7 +58,7 @@ public class EchoBotService extends TelegramLongPollingBot {
 
         var moedas = ObterMoedas(Double.parseDouble(update.getMessage().getText()));
 
-        var resposta = moedas.enviarMensagemTelegram(firstName, Double.parseDouble(update.getMessage().getText()));
+        var resposta = moedas.enviarMensagemTelegram(firstName, Integer.parseInt(update.getMessage().getText()));
 
         return SendMessage.builder()
                 .text(resposta)

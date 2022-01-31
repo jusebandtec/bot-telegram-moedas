@@ -86,8 +86,8 @@ public class Coins {
 
     }
 
-    public String enviarMensagemTelegram(String nome, double valor) {
-        return String.format("Olá, %1$s, você tem %2$s BCOIN's que valem:\nR$ %3$.4f \nUSD %4$.4f", nome, valor, this.BRL, this.BCOIN);
+    public String enviarMensagemTelegram(String nome, int valor) {
+        return String.format("Olá, %1$s, você tem %2$d BCOIN's que valem:\n\nR$ %3$.2f \nUSD %4$.2f", nome, valor, this.BRL, this.BCOIN);
     }
 
     private String getUSDString() {
