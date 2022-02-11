@@ -108,7 +108,7 @@ public class Coins {
                 "%4$s\n" +
                 "%4$s\n" +
                 "%4%s",
-                        getBCOINString(), getUSDString(), getEURString(), getBTCString(), getETHERIUMString());
+                        getBCOINString(), getUSDString(), getEURString(), getBTCString(), getETHERIUMString(), getShibaInuString());
 
     }
 
@@ -143,7 +143,7 @@ public class Coins {
 
     private String getETHERIUMString() {
         return Double.isInfinite(this.getETHEREUM()) ?
-                "Não conseguimos trazer o valor da moeda ETHERIUM" : String.format("ETH - R$%1$.4f", this.BCOIN);
+                "Não conseguimos trazer o valor da moeda ETHERIUM" : String.format("ETH - R$%1$.4f", this.getETHEREUM());
     }
 
     private String getShibaInuString() {
