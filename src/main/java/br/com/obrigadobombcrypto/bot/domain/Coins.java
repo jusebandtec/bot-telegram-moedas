@@ -106,8 +106,8 @@ public class Coins {
                 "%2$s\n" +
                 "%3$s\n" +
                 "%4$s\n" +
-                "%4$s\n" +
-                "%4%s",
+                "%5$s\n" +
+                "%6%s",
                         getBCOINString(), getUSDString(), getEURString(), getBTCString(), getETHERIUMString(), getShibaInuString());
 
     }
