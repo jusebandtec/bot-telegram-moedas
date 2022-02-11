@@ -1,5 +1,9 @@
 package br.com.obrigadobombcrypto.bot.domain;
 
+import lombok.var;
+
+import java.text.DecimalFormat;
+
 public class Coins {
 
     private double USD;
@@ -8,14 +12,18 @@ public class Coins {
     private double BTC;
     private double BRL;
     private double BCOINTOUSD;
+    private double ETHEREUM;
+    private double shibaInu;
 
-    public Coins(double USD, double EUR, double BCOIN, double BTC, double BRL, double BCOINTOUSD) {
+    public Coins(double USD, double EUR, double BCOIN, double BTC, double BRL, double BCOINTOUSD, double ethereum, double shibaInu) {
         this.BRL = BRL;
         this.USD = this.BRL / USD;
         this.EUR = this.BRL / EUR;
         this.BCOIN = BCOIN;
         this.BTC = BTC;
         this.BCOINTOUSD = BCOINTOUSD;
+        this.ETHEREUM = ethereum;
+        this.shibaInu = shibaInu;
     }
 
     public Coins(double valor, double BCOIN, double BRL) {
@@ -24,6 +32,14 @@ public class Coins {
     }
 
     public Coins() { }
+
+    public double getETHEREUM() {
+        return ETHEREUM;
+    }
+
+    public void setETHEREUM(double ETHEREUM) {
+        this.ETHEREUM = ETHEREUM;
+    }
 
     public double getBCOINTOUSD() {
         return BCOINTOUSD;
@@ -73,6 +89,14 @@ public class Coins {
         this.BRL = BRL;
     }
 
+    public double getShibaInu() {
+        return shibaInu;
+    }
+
+    public void setShibaInu(double shibaInu) {
+        this.shibaInu = shibaInu;
+    }
+
     @Override
     public String toString() {
 
@@ -81,8 +105,10 @@ public class Coins {
                 "%1$s\n" +
                 "%2$s\n" +
                 "%3$s\n" +
-                "%4$s",
-                        getBCOINString(), getUSDString(), getEURString(), getBTCString());
+                "%4$s\n" +
+                "%4$s\n" +
+                "%4%s",
+                        getBCOINString(), getUSDString(), getEURString(), getBTCString(), getETHERIUMString());
 
     }
 
@@ -113,5 +139,17 @@ public class Coins {
     private String getBCOINString() {
         return Double.isInfinite(this.BCOIN) ?
                 "Não conseguimos trazer o valor da moeda BCOIN" : String.format("BCOIN - R$%1$.4f", this.BCOIN);
+    }
+
+    private String getETHERIUMString() {
+        return Double.isInfinite(this.getETHEREUM()) ?
+                "Não conseguimos trazer o valor da moeda ETHERIUM" : String.format("ETH - R$%1$.4f", this.BCOIN);
+    }
+
+    private String getShibaInuString() {
+        DecimalFormat format = new DecimalFormat("0.00000000000");
+        var shibainu = format.format(this.getShibaInu());
+        return Double.isInfinite(this.getShibaInu()) ?
+                "Não conseguimos trazer o valor da moeda Shiba Inu" : String.format("SHIB - R$%1$s", shibainu);
     }
 }

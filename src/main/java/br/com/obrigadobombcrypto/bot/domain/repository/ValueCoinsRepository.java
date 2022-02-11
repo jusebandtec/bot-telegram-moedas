@@ -13,4 +13,6 @@ public interface ValueCoinsRepository {
     double getBRL();
     double getBCOIN() throws IOException;
     double getBCOINinUSD() throws IOException;
+    double getEtherium() throws IOException;
+    double getShibaInu() throws IOException;
 }

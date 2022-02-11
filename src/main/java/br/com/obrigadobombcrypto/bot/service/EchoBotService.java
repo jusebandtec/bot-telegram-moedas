@@ -79,7 +79,9 @@ public class EchoBotService extends TelegramLongPollingBot {
                 valueCoinsRepository.getBCOIN(),
                 valueCoinsRepository.getBTC(),
                 valueCoinsRepository.getBRL(),
-                valueCoinsRepository.getBCOINinUSD()
+                valueCoinsRepository.getBCOINinUSD(),
+                valueCoinsRepository.getEtherium(),
+                valueCoinsRepository.getShibaInu()
             );
     }
 
