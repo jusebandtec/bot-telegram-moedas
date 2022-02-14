@@ -108,7 +108,13 @@ public class Coins {
                 "%4$s\n" +
                 "%5$s\n" +
                 "%6$s",
-                        getBCOINString(), getUSDString(), getEURString(), getBTCString(), getETHERIUMString(), getShibaInuString());
+
+                getBCOINString(),
+                getUSDString(),
+                getEURString(),
+                getBTCString(),
+                getETHERIUMString(),
+                getShibaInuString());
 
     }
 

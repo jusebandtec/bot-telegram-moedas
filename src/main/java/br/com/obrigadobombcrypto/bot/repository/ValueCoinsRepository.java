@@ -99,7 +99,7 @@ public class ValueCoinsRepository implements br.com.obrigadobombcrypto.bot.domai
     public double getBCOIN() throws IOException {
         var httpClientRequest = HttpClients.createDefault();
         var httpGet = new HttpGet("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=12252&convert=BRL");
-        httpGet.setHeader("X-CMC_PRO_API_KEY","d9c76d00-264a-4dbd-ad00-063e29d618ef");
+        httpGet.setHeader("header-name","value-header");
 
         ResponseHandler responseHandler = response -> {
             if (response.getStatusLine().getStatusCode() == 200) {
@@ -128,7 +128,7 @@ public class ValueCoinsRepository implements br.com.obrigadobombcrypto.bot.domai
     public double getBCOINinUSD() throws IOException {
         var httpClientRequest = HttpClients.createDefault();
         var httpGet = new HttpGet("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=12252&convert=USD");
-        httpGet.setHeader("X-CMC_PRO_API_KEY","d9c76d00-264a-4dbd-ad00-063e29d618ef");
+        httpGet.setHeader("header-name","value-header");
 
         ResponseHandler responseHandler = response -> {
             if (response.getStatusLine().getStatusCode() == 200) {
@@ -157,7 +157,7 @@ public class ValueCoinsRepository implements br.com.obrigadobombcrypto.bot.domai
     public double getEtherium() throws IOException {
         var httpClientRequest = HttpClients.createDefault();
         var httpGet = new HttpGet("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=1027&convert=BRL");
-        httpGet.setHeader("X-CMC_PRO_API_KEY","d9c76d00-264a-4dbd-ad00-063e29d618ef");
+        httpGet.setHeader("header-name","value-header");
 
         ResponseHandler responseHandler = response -> {
             if (response.getStatusLine().getStatusCode() == 200) {
@@ -186,7 +186,7 @@ public class ValueCoinsRepository implements br.com.obrigadobombcrypto.bot.domai
     public double getShibaInu() throws IOException {
         var httpClientRequest = HttpClients.createDefault();
         var httpGet = new HttpGet("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=5994&convert=BRL");
-        httpGet.setHeader("X-CMC_PRO_API_KEY","d9c76d00-264a-4dbd-ad00-063e29d618ef");
+        httpGet.setHeader("header-name","value-header");
 
         ResponseHandler responseHandler = response -> {
             if (response.getStatusLine().getStatusCode() == 200) {
