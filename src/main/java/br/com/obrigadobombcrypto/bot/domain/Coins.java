@@ -124,32 +124,32 @@ public class Coins {
 
     private String getUSDString() {
         return Double.isInfinite(this.USD) ?
-                "Não conseguimos trazer o valor da moeda USD" : String.format("USD - R$%1$.4f", this.USD);
+                "Não conseguimos trazer o valor da moeda USD" : String.format("USD - R$%1$.2f", this.USD);
     }
 
     private String getEURString() {
         return Double.isInfinite(this.EUR) ?
-                "Não conseguimos trazer o valor da moeda EUR" : String.format("EUR - R$%1$.4f", this.EUR);
+                "Não conseguimos trazer o valor da moeda EUR" : String.format("EUR - R$%1$.2f", this.EUR);
     }
 
     private String getBRLString() {
         return Double.isInfinite(this.BRL) ?
-                "Não conseguimos trazer o valor da moeda BRL" : String.format("BRL - R$%1$.4f", this.BRL);
+                "Não conseguimos trazer o valor da moeda BRL" : String.format("BRL - R$%1$.2f", this.BRL);
     }
 
     private String getBTCString() {
         return Double.isInfinite(this.BTC) ?
-                "Não conseguimos trazer o valor da moeda BTC" : String.format("BTC - R$%1$.4f", this.BTC);
+                "Não conseguimos trazer o valor da moeda BTC" : String.format("BTC - R$%1$.2f", this.BTC);
     }
 
     private String getBCOINString() {
         return Double.isInfinite(this.BCOIN) ?
-                "Não conseguimos trazer o valor da moeda BCOIN" : String.format("BCOIN - R$%1$.4f", this.BCOIN);
+                "Não conseguimos trazer o valor da moeda BCOIN" : String.format("BCOIN - R$%1$.2f", this.BCOIN);
     }
 
     private String getETHERIUMString() {
         return Double.isInfinite(this.getETHEREUM()) ?
-                "Não conseguimos trazer o valor da moeda ETHERIUM" : String.format("ETH - R$%1$.4f", this.getETHEREUM());
+                "Não conseguimos trazer o valor da moeda ETHERIUM" : String.format("ETH - R$%1$.2f", this.getETHEREUM());
     }
 
     private String getShibaInuString() {
