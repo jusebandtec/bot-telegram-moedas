@@ -6,6 +6,7 @@ public class QuoteCoinMarket {
     private ConvertCoin USD;
     private ConvertCoin ETHERIUM;
     private ConvertCoin shibaInu;
+    private ConvertCoin spe;
 
     public ConvertCoin getBRL() {
         return BRL;
@@ -37,5 +38,13 @@ public class QuoteCoinMarket {
 
     public void setShibaInu(ConvertCoin shibaInu) {
         this.shibaInu = shibaInu;
+    }
+
+    public ConvertCoin getSpe() {
+        return spe;
+    }
+
+    public void setSpe(ConvertCoin spe) {
+        this.spe = spe;
     }
 }

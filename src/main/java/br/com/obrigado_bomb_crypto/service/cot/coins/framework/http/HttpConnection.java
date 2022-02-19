@@ -76,7 +76,7 @@ public class HttpConnection {
                 httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
         }
         else {
-                throw new Exception();
+            throw new Exception();
         }
 
         Instant end = Instant.now();

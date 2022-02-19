@@ -11,9 +11,11 @@ public interface ObterValorMoedasRepository {
     double getEUR();
     double getBTC() throws Exception;
     double getBRL();
-    double getBCOIN() throws Exception;
-    double getBCOINinUSD() throws Exception;
+    double getBcoinBrl() throws Exception;
+    double getBcoinUsd() throws Exception;
     double getEtherium() throws Exception;
-    double getShibaInu() throws Exception;
-
+    double getShibaInuBrl() throws Exception;
+    double getShibaInuUsd() throws Exception;
+    double getSpeBrl() throws Exception;
+    double getSpeUsd() throws Exception;
 }

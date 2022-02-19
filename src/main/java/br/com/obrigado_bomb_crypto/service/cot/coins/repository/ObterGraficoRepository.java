@@ -1,6 +1,8 @@
 package br.com.obrigado_bomb_crypto.service.cot.coins.repository;
 
 import br.com.obrigado_bomb_crypto.service.cot.coins.framework.http.HttpConnection;
+import br.com.obrigado_bomb_crypto.service.cot.coins.framework.http.HttpRepository;
+import br.com.obrigado_bomb_crypto.service.cot.coins.framework.http.HttpRequest;
 import br.com.obrigado_bomb_crypto.service.cot.coins.infraestructure.JsonHelper;
 import br.com.obrigado_bomb_crypto.service.cot.coins.repository.requests.ObterGraficoRequest;
 import br.com.obrigado_bomb_crypto.service.cot.coins.repository.requests.PostarDadosGraficoRequest;

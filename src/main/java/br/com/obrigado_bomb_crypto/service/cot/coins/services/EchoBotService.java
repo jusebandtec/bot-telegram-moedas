@@ -66,9 +66,11 @@ public class EchoBotService extends TelegramLongPollingBot {
 
         var firstName = update.getMessage().getFrom().getFirstName();
 
-        var moedas = ObterMoedas(Double.parseDouble(update.getMessage().getText()));
+        var mensagemArray = update.getMessage().getText().split(" ");
 
-        var resposta = moedas.enviarMensagemTelegram(firstName, Integer.parseInt(update.getMessage().getText()));
+        var moedas = ObterMoedas();
+
+        var resposta = moedas.enviarMensagemTelegram(firstName, Integer.parseInt(mensagemArray[0]), mensagemArray[1]);
 
         return SendMessage.builder()
                 .text(resposta)
@@ -100,12 +102,15 @@ public class EchoBotService extends TelegramLongPollingBot {
             (
                 valueCoinsRepository.getUSD(),
                 valueCoinsRepository.getEUR(),
-                valueCoinsRepository.getBCOIN(),
+                valueCoinsRepository.getBcoinBrl(),
                 valueCoinsRepository.getBTC(),
                 valueCoinsRepository.getBRL(),
-                valueCoinsRepository.getBCOINinUSD(),
+                valueCoinsRepository.getBcoinUsd(),
                 valueCoinsRepository.getEtherium(),
-                valueCoinsRepository.getShibaInu()
+                valueCoinsRepository.getShibaInuBrl(),
+                valueCoinsRepository.getShibaInuUsd(),
+                valueCoinsRepository.getSpeBrl(),
+                valueCoinsRepository.getSpeUsd()
             );
     }
 
@@ -113,7 +118,7 @@ public class EchoBotService extends TelegramLongPollingBot {
 
         var moedas = ObterMoedas();
 
-        return new Coins(valor, moedas.getBCOINTOUSD(), moedas.getUSD());
+        return new Coins(valor, moedas.getBcoinUsd(), moedas.getUSD());
 
     }
 

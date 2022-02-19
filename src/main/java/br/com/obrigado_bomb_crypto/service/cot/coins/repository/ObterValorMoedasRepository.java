@@ -54,7 +54,7 @@ public class ObterValorMoedasRepository implements br.com.obrigado_bomb_crypto.s
     }
 
     @Override
-    public double getBCOIN() throws Exception {
+    public double getBcoinBrl() throws Exception {
         var obterBcoinRequest = new ObterBcoinRequest();
         var responseBody = this.httpConnection.doRequest(obterBcoinRequest);
         var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"12252\":{"), "");
@@ -69,7 +69,7 @@ public class ObterValorMoedasRepository implements br.com.obrigado_bomb_crypto.s
     }
 
     @Override
-    public double getBCOINinUSD() throws Exception {
+    public double getBcoinUsd() throws Exception {
         var obterBcoinEmDolarRequest = new ObterBcoinEmUsdRequest();
         var responseBody = this.httpConnection.doRequest(obterBcoinEmDolarRequest);
         var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"12252\":{"), "");
@@ -99,8 +99,8 @@ public class ObterValorMoedasRepository implements br.com.obrigado_bomb_crypto.s
     }
 
     @Override
-    public double getShibaInu() throws Exception {
-        var obterShinaIbu = new ObterShinaInuRequest();
+    public double getShibaInuBrl() throws Exception {
+        var obterShinaIbu = new ObterShinaInuBrlRequest();
         var responseBody = this.httpConnection.doRequest(obterShinaIbu);
         var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"5994\":{"), "");
         var stringBuffer = new StringBuffer(responseBodyString);
@@ -113,6 +113,50 @@ public class ObterValorMoedasRepository implements br.com.obrigado_bomb_crypto.s
                 .getPrice();
     }
 
+    @Override
+    public double getShibaInuUsd() throws Exception {
+        var obterShinaIbuUsd = new ObterShinaInuUsdRequest();
+        var responseBody = this.httpConnection.doRequest(obterShinaIbuUsd);
+        var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"5994\":{"), "");
+        var stringBuffer = new StringBuffer(responseBodyString);
+        stringBuffer.deleteCharAt(responseBodyString.length()-1);
+        var response = this.gson.fromJson(stringBuffer.toString(), CoinMarketGetCoinResponse.class);
+        return response
+                .getData()
+                .getQuote()
+                .getUSD()
+                .getPrice();
+    }
+
+    @Override
+    public double getSpeBrl() throws Exception {
+        var obteSpe = new ObterSpeBrlRequest();
+        var responseBody = this.httpConnection.doRequest(obteSpe);
+        var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"18149\":{"), "");
+        var stringBuffer = new StringBuffer(responseBodyString);
+        stringBuffer.deleteCharAt(responseBodyString.length()-1);
+        var response = this.gson.fromJson(stringBuffer.toString(), CoinMarketGetCoinResponse.class);
+        return response
+                .getData()
+                .getQuote()
+                .getBRL()
+                .getPrice();
+    }
+
+    @Override
+    public double getSpeUsd() throws Exception {
+        var obteSpeUsd = new ObterSpeUsdRequest();
+        var responseBody = this.httpConnection.doRequest(obteSpeUsd);
+        var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"18149\":{"), "");
+        var stringBuffer = new StringBuffer(responseBodyString);
+        stringBuffer.deleteCharAt(responseBodyString.length()-1);
+        var response = this.gson.fromJson(stringBuffer.toString(), CoinMarketGetCoinResponse.class);
+        return response
+                .getData()
+                .getQuote()
+                .getUSD()
+                .getPrice();
+    }
 
 
     private ObterTodasMoedasResponseData makeRequest() throws Exception {

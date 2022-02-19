@@ -9,7 +9,6 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 
 @Component
@@ -30,7 +29,7 @@ public class BotScheduler {
         var valueCoinsRepository = new ObterValorMoedasRepository();
         var obterGraficoRepository = new ObterGraficoRepository();
 
-        var bcoin = valueCoinsRepository.getBCOIN();
+        var bcoin = valueCoinsRepository.getBcoinBrl();
         DecimalFormat df =  new DecimalFormat();
         df.setMaximumFractionDigits(2);
         var bcoinString = df.format(bcoin).replace(",",".");
