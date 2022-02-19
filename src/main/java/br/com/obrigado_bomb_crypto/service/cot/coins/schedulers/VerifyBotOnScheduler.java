@@ -8,6 +8,8 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -16,17 +18,30 @@ import java.io.IOException;
 @Component
 public class VerifyBotOnScheduler {
 
+
+    private final Logger logger = LoggerFactory.getLogger(VerifyBotOnScheduler.class);
+
     @Scheduled(fixedRate = 300000)
     public void execute() throws Exception {
-        var httpConnection = new HttpConnection();
-        var obterHealthCheckApiRequest = new ObterHealthCheckApiRequest();
-        httpConnection.doRequest(obterHealthCheckApiRequest);
+        try {
+            var httpConnection = new HttpConnection();
+            var obterHealthCheckApiRequest = new ObterHealthCheckApiRequest();
+            httpConnection.doRequest(obterHealthCheckApiRequest);
+            logger.info("API ON - OK");
+        } catch (Exception ex) {
+            logger.error("API DESLIGADA");
+        }
     }
 
     @Scheduled(fixedRate = 120000)
     public void verifyApiPython() throws Exception {
-        var httpConnection = new HttpConnection();
-        var obterHealthCheckApiGraficoRequest = new ObterHealthCheckApiGraficoRequest();
-        httpConnection.doRequest(obterHealthCheckApiGraficoRequest);
+        try {
+            var httpConnection = new HttpConnection();
+            var obterHealthCheckApiGraficoRequest = new ObterHealthCheckApiGraficoRequest();
+            httpConnection.doRequest(obterHealthCheckApiGraficoRequest);
+            logger.info("API GRAFICO ON - OK");
+        } catch (Exception ex) {
+            logger.error("API DESLIGADA");
+        }
     }
 }

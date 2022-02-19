@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class ObterBitcoinRequest extends HttpRequest {
     public ObterBitcoinRequest() {
         setHttpMethod(HttpMethod.GET);
-        setUriRelative("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=5994&convert=BRL");
+        setUriRelative("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=1&convert=BRL");
         setHeaders(new HashMap(){{
             put("X-CMC_PRO_API_KEY","d9c76d00-264a-4dbd-ad00-063e29d618ef");
         }});

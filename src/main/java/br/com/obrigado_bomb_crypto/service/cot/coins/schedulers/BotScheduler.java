@@ -31,7 +31,9 @@ public class BotScheduler {
         var obterGraficoRepository = new ObterGraficoRepository();
 
         var bcoin = valueCoinsRepository.getBCOIN();
-        var formato = new DecimalFormat("#.##");
-        obterGraficoRepository.postarDadosGrafico(Double.valueOf(formato.format(bcoin)));
+        DecimalFormat df =  new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        var bcoinString = df.format(bcoin).replace(",",".");
+        obterGraficoRepository.postarDadosGrafico(Double.parseDouble(bcoinString));
     }
 }

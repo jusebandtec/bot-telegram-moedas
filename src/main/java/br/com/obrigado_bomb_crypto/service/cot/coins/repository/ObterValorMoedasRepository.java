@@ -14,8 +14,8 @@ public class ObterValorMoedasRepository implements br.com.obrigado_bomb_crypto.s
 
     public ObterValorMoedasRepository() throws Exception {
         this.gson = new Gson();
-        this.coins = makeRequest();
         this.httpConnection = new HttpConnection();
+        this.coins = makeRequest();
     }
 
     @Override
@@ -72,7 +72,7 @@ public class ObterValorMoedasRepository implements br.com.obrigado_bomb_crypto.s
     public double getBCOINinUSD() throws Exception {
         var obterBcoinEmDolarRequest = new ObterBcoinEmUsdRequest();
         var responseBody = this.httpConnection.doRequest(obterBcoinEmDolarRequest);
-        var responseBodyString = responseBody.toString().replace(String.valueOf("\"12252\":{"), "");
+        var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"12252\":{"), "");
         var stringBuffer = new StringBuffer(responseBodyString);
         stringBuffer.deleteCharAt(responseBodyString.length()-1);
         var response = this.gson.fromJson(stringBuffer.toString(), CoinMarketGetCoinResponse.class);
@@ -87,7 +87,7 @@ public class ObterValorMoedasRepository implements br.com.obrigado_bomb_crypto.s
     public double getEtherium() throws Exception {
         var obterEtheriumRequest = new ObterEtheriumRequest();
         var responseBody = this.httpConnection.doRequest(obterEtheriumRequest);
-        var responseBodyString = responseBody.toString().replace(String.valueOf("\"1027\":{"), "");
+        var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"1027\":{"), "");
         var stringBuffer = new StringBuffer(responseBodyString);
         stringBuffer.deleteCharAt(responseBodyString.length()-1);
         var response = this.gson.fromJson(stringBuffer.toString(), CoinMarketGetCoinResponse.class);
@@ -102,7 +102,7 @@ public class ObterValorMoedasRepository implements br.com.obrigado_bomb_crypto.s
     public double getShibaInu() throws Exception {
         var obterShinaIbu = new ObterShinaInuRequest();
         var responseBody = this.httpConnection.doRequest(obterShinaIbu);
-        var responseBodyString = responseBody.toString().replace(String.valueOf("\"5994\":{"), "");
+        var responseBodyString = responseBody.getContentResponse().replace(String.valueOf("\"5994\":{"), "");
         var stringBuffer = new StringBuffer(responseBodyString);
         stringBuffer.deleteCharAt(responseBodyString.length()-1);
         var response = this.gson.fromJson(stringBuffer.toString(), CoinMarketGetCoinResponse.class);

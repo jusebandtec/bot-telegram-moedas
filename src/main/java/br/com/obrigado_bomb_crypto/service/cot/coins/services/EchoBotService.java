@@ -2,12 +2,16 @@ package br.com.obrigado_bomb_crypto.service.cot.coins.services;
 
 import br.com.obrigado_bomb_crypto.service.cot.coins.domain.Bot;
 import br.com.obrigado_bomb_crypto.service.cot.coins.domain.Coins;
+import br.com.obrigado_bomb_crypto.service.cot.coins.repository.ObterGraficoRepository;
 import br.com.obrigado_bomb_crypto.service.cot.coins.repository.ObterValorMoedasRepository;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -39,6 +43,9 @@ public class EchoBotService extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         try {
+            if (update.getMessage().getText().equals("graph_bcoin")) {
+                execute(sendPhoto());
+            }
             var mensagem = sendMessage(update);
             execute(mensagem);
         } catch (TelegramApiException | IOException ex) {
@@ -68,6 +75,20 @@ public class EchoBotService extends TelegramLongPollingBot {
                 .chatId("-656768137")
                 .build();
 
+    }
+
+    private SendPhoto sendPhoto() throws Exception {
+
+        var serviceImage = new ServiceImage();
+        var obterGraficoRepository = new ObterGraficoRepository();
+
+        serviceImage.saveImgBase64(obterGraficoRepository.obterDadosGrafico().getData());
+
+        SendPhoto sendPhotoRequest = new SendPhoto();
+        sendPhotoRequest.setChatId("-656768137");
+        sendPhotoRequest.setPhoto(new InputFile(new File("grafico.png")));
+
+        return sendPhotoRequest;
     }
 
 
