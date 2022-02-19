@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'br.com.obrigado-bombcrypto.bot' is invalid and this project uses 'br.com.obrigadobombcrypto.bot' instead.
+* The original package name 'br.com.obrigado_bomb_crypto.service cot coins' is invalid and this project uses 'br.com.obrigado_bomb_crypto.service.cot.coins' instead.
 
 # Getting Started
 
