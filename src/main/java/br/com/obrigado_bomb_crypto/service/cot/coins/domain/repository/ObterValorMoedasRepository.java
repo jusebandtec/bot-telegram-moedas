@@ -1,12 +1,13 @@
 package br.com.obrigado_bomb_crypto.service.cot.coins.domain.repository;
 
 import br.com.obrigado_bomb_crypto.service.cot.coins.repository.responses.CoinsResponseData;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
 public interface ObterValorMoedasRepository {
 
-    CoinsResponseData getAllCoins();
+    CoinsResponseData getAllCoins() throws Exception;
     double getUSD();
     double getEUR();
     double getBTC() throws Exception;

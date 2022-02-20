@@ -1,5 +1,9 @@
 package br.com.obrigado_bomb_crypto.service.cot.coins.repository.responses;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+@Component
 public class ObterTodasMoedasResponseData {
 
     private String result;

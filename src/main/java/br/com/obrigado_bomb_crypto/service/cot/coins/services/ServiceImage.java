@@ -2,14 +2,13 @@ package br.com.obrigado_bomb_crypto.service.cot.coins.services;
 
 
 import org.apache.maven.surefire.shared.io.FileUtils;
+import org.springframework.stereotype.Service;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 
+@Service
 public class ServiceImage implements br.com.obrigado_bomb_crypto.service.cot.coins.domain.services.ServiceImage {
 
     @Override

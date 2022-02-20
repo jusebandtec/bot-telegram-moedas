@@ -2,8 +2,13 @@ package br.com.obrigado_bomb_crypto.service.cot.coins.services;
 
 import br.com.obrigado_bomb_crypto.service.cot.coins.domain.Bot;
 import br.com.obrigado_bomb_crypto.service.cot.coins.domain.Coins;
-import br.com.obrigado_bomb_crypto.service.cot.coins.repository.ObterGraficoRepository;
-import br.com.obrigado_bomb_crypto.service.cot.coins.repository.ObterValorMoedasRepository;
+import br.com.obrigado_bomb_crypto.service.cot.coins.domain.repository.ObterGraficoRepository;
+import br.com.obrigado_bomb_crypto.service.cot.coins.domain.repository.ObterValorMoedasRepository;
+import br.com.obrigado_bomb_crypto.service.cot.coins.domain.services.ServiceImage;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -14,9 +19,17 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.File;
 import java.io.IOException;
 
-
 public class EchoBotService extends TelegramLongPollingBot {
 
+    private ObterValorMoedasRepository obterValorMoedasRepository;
+    private ObterGraficoRepository obterGraficoRepository;
+    private ServiceImage serviceImage;
+
+    public EchoBotService(ObterValorMoedasRepository obterValorMoedasRepository, ObterGraficoRepository obterGraficoRepository, ServiceImage serviceImage) {
+        this.obterValorMoedasRepository = obterValorMoedasRepository;
+        this.obterGraficoRepository = obterGraficoRepository;
+        this.serviceImage = serviceImage;
+    }
 
     @Override
     public String getBotUsername() {
@@ -80,46 +93,31 @@ public class EchoBotService extends TelegramLongPollingBot {
     }
 
     private SendPhoto sendPhoto() throws Exception {
-
-        var serviceImage = new ServiceImage();
-        var obterGraficoRepository = new ObterGraficoRepository();
-
         serviceImage.saveImgBase64(obterGraficoRepository.obterDadosGrafico().getData());
-
         SendPhoto sendPhotoRequest = new SendPhoto();
         sendPhotoRequest.setChatId("-656768137");
         sendPhotoRequest.setPhoto(new InputFile(new File("grafico.png")));
-
         return sendPhotoRequest;
     }
 
 
     private Coins ObterMoedas() throws Exception {
 
-        var valueCoinsRepository = new ObterValorMoedasRepository();
+        obterValorMoedasRepository.getAllCoins();
 
         return new Coins
             (
-                valueCoinsRepository.getUSD(),
-                valueCoinsRepository.getEUR(),
-                valueCoinsRepository.getBcoinBrl(),
-                valueCoinsRepository.getBTC(),
-                valueCoinsRepository.getBRL(),
-                valueCoinsRepository.getBcoinUsd(),
-                valueCoinsRepository.getEtherium(),
-                valueCoinsRepository.getShibaInuBrl(),
-                valueCoinsRepository.getShibaInuUsd(),
-                valueCoinsRepository.getSpeBrl(),
-                valueCoinsRepository.getSpeUsd()
+                obterValorMoedasRepository.getUSD(),
+                obterValorMoedasRepository.getEUR(),
+                obterValorMoedasRepository.getBcoinBrl(),
+                obterValorMoedasRepository.getBTC(),
+                obterValorMoedasRepository.getBRL(),
+                obterValorMoedasRepository.getBcoinUsd(),
+                obterValorMoedasRepository.getEtherium(),
+                obterValorMoedasRepository.getShibaInuBrl(),
+                obterValorMoedasRepository.getShibaInuUsd(),
+                obterValorMoedasRepository.getSpeBrl(),
+                obterValorMoedasRepository.getSpeUsd()
             );
     }
-
-    private Coins ObterMoedas(double valor) throws Exception {
-
-        var moedas = ObterMoedas();
-
-        return new Coins(valor, moedas.getBcoinUsd(), moedas.getUSD());
-
-    }
-
 }

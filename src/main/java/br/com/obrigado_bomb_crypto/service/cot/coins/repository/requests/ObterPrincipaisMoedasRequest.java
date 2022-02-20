@@ -9,6 +9,6 @@ import java.util.HashMap;
 public class ObterPrincipaisMoedasRequest extends HttpRequest {
     public ObterPrincipaisMoedasRequest() {
         setHttpMethod(HttpMethod.GET);
-        setUriRelative("https://v6.exchangerate-api.com/v6/e3584d13af8f66d3fdbfb196/latest/BRL");
+        setUriRelative("https://v6.exchangerate-api.com/v6/7ed504c6a909a940b6c17a25/latest/BRL");
     }
 }
